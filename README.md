@@ -1,5 +1,7 @@
 # info-linux
 
+# vm
+
 ## ubuntu clipboard
 ```bash
 sudo apt update
@@ -42,6 +44,8 @@ echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/microsoft.gpg] https://pa
 sudo apt update
 sudo apt install code
 ```
+
+# native
 
 ## nginx
 ```bash
