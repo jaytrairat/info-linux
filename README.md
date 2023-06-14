@@ -3,7 +3,7 @@
 # vm
 
 ## ubuntu clipboard
-```bash
+```shellscript
 sudo apt update
 sudo apt install build-essential dkms linux-headers-$(uname -r)
 sudo apt install virtualbox-guest-x11
