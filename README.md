@@ -17,6 +17,13 @@ php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo '
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ```
 
+## ubuntu php
+```bash
+apt install lsb-release ca-certificates apt-transport-https software-properties-common -y
+add-apt-repository ppa:ondrej/php
+apt install php8.2 -y
+```
+
 ## nginx
 ```bash
 sudo apt install nginx
