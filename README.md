@@ -20,7 +20,7 @@ sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=compose
 ## ubuntu php
 ```bash
 sudo apt install lsb-release ca-certificates apt-transport-https software-properties-common -y
-add-apt-repository ppa:ondrej/php
+sudo add-apt-repository ppa:ondrej/php
 sudo apt install php8.2 -y
 ```
 
