@@ -10,6 +10,13 @@ sudo apt install virtualbox-guest-x11
 sudo VBoxClient --clipboard
 ```
 
+## ubuntu php
+```bash
+sudo apt install lsb-release ca-certificates apt-transport-https software-properties-common -y
+sudo add-apt-repository ppa:ondrej/php
+sudo apt install php8.2 -y
+```
+
 ## ubuntu composer
 ```bash
 sudo apt install unzip php-cli curl php-xml
@@ -17,13 +24,6 @@ curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 HASH=`curl -sS https://composer.github.io/installer.sig`
 php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-```
-
-## ubuntu php
-```bash
-sudo apt install lsb-release ca-certificates apt-transport-https software-properties-common -y
-sudo add-apt-repository ppa:ondrej/php
-sudo apt install php8.2 -y
 ```
 
 ## ubuntu docker
