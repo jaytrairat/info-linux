@@ -37,7 +37,7 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-## ubunttu vscode
+## ubuntu vscode
 ```bash
 sudo apt install apt-transport-https curl
 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
