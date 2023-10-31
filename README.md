@@ -2,32 +2,12 @@
 
 # vm
 
-## ubuntu clipboard
+## share clipboard between vm and host
 ```bash
-sudo apt update
-sudo apt install build-essential dkms linux-headers-$(uname -r)
-sudo apt install virtualbox-guest-x11
-sudo VBoxClient --clipboard
+sudo apt update && sudo apt install build-essential dkms linux-headers-$(uname -r) && sudo apt install virtualbox-guest-x11 && sudo VBoxClient --clipboard
 ```
 
-## ubuntu php
-```bash
-sudo apt install lsb-release ca-certificates apt-transport-https software-properties-common -y
-sudo add-apt-repository ppa:ondrej/php
-sudo apt install php8.2 -y
-```
-
-## ubuntu composer
-```bash
-sudo apt install unzip php-cli curl php-xml
-curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
-HASH=`curl -sS https://composer.github.io/installer.sig`
-php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-composer install --ignore-platform-req=ext-curl
-```
-
-## ubuntu docker
+## install docker
 ```bash
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -35,6 +15,21 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] 
 sudo apt install docker-ce docker-ce-cli containerd.io
 sudo groupadd docker
 sudo usermod -aG docker $USER
+```
+
+## install php
+```bash
+sudo apt install lsb-release ca-certificates apt-transport-https software-properties-common -y && sudo add-apt-repository ppa:ondrej/php && sudo apt install php8.2 -y
+```
+
+## install composer
+```bash
+sudo apt install unzip php-cli curl php-xml
+curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+HASH=`curl -sS https://composer.github.io/installer.sig`
+php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+composer install --ignore-platform-req=ext-curl
 ```
 
 ## ubuntu vscode
