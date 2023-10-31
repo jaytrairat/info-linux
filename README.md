@@ -6,11 +6,16 @@ sudo apt install apt-transport-https curl && curl -fsSL https://packages.microso
 ```
 
 ## install golang
-```
+```bash
 sudo apt install golang
 ```
 
 ## install node
-```
+```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && . ~/.nvm/nvm.sh && nvm install node && nvm alias default node
+```
+
+## install docker
+```bash
+sudo apt install docker.io
 ```
