@@ -19,3 +19,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash 
 ```bash
 sudo apt install docker.io
 ```
+
+## language
+```bash
+sudo dpkg-reconfigure keyboard-configuration
+```
