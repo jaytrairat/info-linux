@@ -9,3 +9,8 @@ sudo apt install apt-transport-https curl && curl -fsSL https://packages.microso
 ```
 sudo apt install golang
 ```
+
+## install node
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && . ~/.nvm/nvm.sh && nvm install node && nvm alias default node
+```
