@@ -2,6 +2,11 @@
 
 # vm
 
+## install vscode
+```bash
+sudo apt update && sudo apt install -y software-properties-common apt-transport-https wget && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && sudo apt update && sudo apt install code
+```
+
 ## share clipboard between vm and host
 ```bash
 sudo apt update && sudo apt install build-essential dkms linux-headers-$(uname -r) && sudo apt install virtualbox-guest-x11 && sudo VBoxClient --clipboard
@@ -30,15 +35,6 @@ HASH=`curl -sS https://composer.github.io/installer.sig`
 php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 composer install --ignore-platform-req=ext-curl
-```
-
-## ubuntu vscode
-```bash
-sudo apt install apt-transport-https curl
-curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
-echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
-sudo apt update
-sudo apt install code
 ```
 
 # native
