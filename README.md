@@ -1,5 +1,3 @@
-# info-linux
-
 # environment setup
 
 ## install vscode
