@@ -29,9 +29,9 @@ sudo dpkg-reconfigure keyboard-configuration
 ```bash
 docker run -d \
   --name docker-mysql \
-  -e MYSQL_ROOT_PASSWORD=root \
+  -e DATABASE=test \
   -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=root\
   -p 3306:3306 \
   mysql:latest
-
 ```
