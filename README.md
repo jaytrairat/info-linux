@@ -24,3 +24,14 @@ sudo apt install docker.io
 ```bash
 sudo dpkg-reconfigure keyboard-configuration
 ```
+
+## docker mysql
+```bash
+docker run -d \
+  --name docker-mysql \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_USER=my_user \
+  -p 3306:3306 \
+  mysql:latest
+
+```
