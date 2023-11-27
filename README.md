@@ -30,7 +30,7 @@ sudo dpkg-reconfigure keyboard-configuration
 docker run -d \
   --name docker-mysql \
   -e MYSQL_ROOT_PASSWORD=root \
-  -e MYSQL_USER=my_user \
+  -e MYSQL_USER=root \
   -p 3306:3306 \
   mysql:latest
 
