@@ -32,14 +32,6 @@ docker run -dp 3306:3306 --name docker-mysql -e MYSQL_ROOT_PASSWORD=root -v /TEM
 ## SSL
 
 ```bash
-openssl genrsa -aes256 -out private-ca-key.pem 4096
-openssl req -new -x509 -sha256 -days 365 -key private-ca-key.pem -out ca.pem
-# openssl x509 -in ca.pem -text
-# openssl x509 -in ca.pem -purpose -noout -text
-openssl genrsa -out cert-key.pem 4096
-openssl req -new -sha256 -subj "/CN=jaytrairat" -key cert-key.pem -out crt.csr
-echo "subjectAltName=DNS:*jaytrairat.local,IP:192.168.9.10" >> extfile.cnf
-openssl x509 -req -sha256 -days 365 -in cert.csr -CA ca.pem -CAkey ca-key.pem -out cert.pem -extfile extfile.cnf -CAcreateserial
-cat cert.pem > fullchain.pem
-cat ca.pem >> fullchain.pem
+openssl genrsa -aes256 -out private.key 2048
+openssl req -new -key private.key -out certificate.csr
 ```
