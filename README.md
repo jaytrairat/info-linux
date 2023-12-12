@@ -34,4 +34,6 @@ docker run -dp 3306:3306 --name docker-mysql -e MYSQL_ROOT_PASSWORD=root -v /TEM
 ```bash
 openssl genrsa -aes256 -out private.key 2048
 openssl req -new -key private.key -out certificate.csr
+openssl req -x509 -key private.key -in certificate.csr -out certificate.pem -days 36500
+
 ```
