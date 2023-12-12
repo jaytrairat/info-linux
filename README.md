@@ -36,5 +36,10 @@ openssl genrsa -aes256 -out private.key 2048
 openssl req -new -key private.key -out certificate.csr
 openssl req -x509 -key private.key -in certificate.csr -out certificate.pem -days 36500
 openssl x509 -in certificate.pem -text -noout
+openssl rsa -in private.key -out private.pem
+
+cat certificate.pem > certificate.crt
+cat private.pem > certificate.crt
+
 
 ```
