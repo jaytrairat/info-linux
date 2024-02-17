@@ -51,8 +51,8 @@ http {
         listen 443 ssl;
         server_name 172.104.163.57;
 
-        ssl_certificate /etc/nginx/cert.pem;
-        ssl_certificate_key /etc/nginx/key.pem;
+        ssl_certificate /cert.pem;
+        ssl_certificate_key /key.pem;
 
         location / {
             proxy_pass http://172.104.163.57:8080;
@@ -76,8 +76,8 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 docker run -d \
   --name nginx-proxy \
   -p 443:443 \
-  -v /root/cert.pem:/etc/nginx/cert.pem \
-  -v /root/key.pem:/etc/nginx/key.pem \
-  -v /root/nginx.conf:/etc/nginx/nginx.conf \
+  -v /root/cert.pem:/cert.pem \
+  -v /root/key.pem:/key.pem \
+  -v /root/nginx.conf:/nginx.conf \
   nginx
 ```
