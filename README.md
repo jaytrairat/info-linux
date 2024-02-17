@@ -54,7 +54,7 @@ server {
     ssl_certificate_key /etc/nginx/key.pem;
 
     location / {
-        proxy_pass http://172.104.163.57:80;
+        proxy_pass http://172.104.163.57:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
