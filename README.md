@@ -51,8 +51,8 @@ http {
         listen 443 ssl;
         server_name 172.104.163.57;
 
-        ssl_certificate /cert.pem;
-        ssl_certificate_key /key.pem;
+        ssl_certificate /etc/nginx/certs/key.crt;
+        ssl_certificate_key /etc/nginx/certs/key.key;
 
         location / {
             proxy_pass http://172.104.163.57:8080;
