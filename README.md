@@ -40,6 +40,39 @@ openssl rsa -in private.key -out private.pem
 
 cat certificate.pem > certificate.crt
 cat private.pem > certificate.crt
+```
 
+## self-signed with docker nginx
+
+### nginx.conf
+```
+server {
+    listen 443 ssl;
+    server_name 172.104.163.57;
+
+    ssl_certificate /etc/nginx/cert.pem;
+    ssl_certificate_key /etc/nginx/key.pem;
+
+    location / {
+        proxy_pass http://172.104.163.57:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+```
+
+```bash
+sudo apt-get install openssl
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+docker run -d \
+  --name nginx-proxy \
+  -p 443:443 \
+  -v /root/cert.pem:/etc/nginx/cert.pem \
+  -v /root/key.pem:/etc/nginx/key.pem \
+  -v /root/nginx.conf:/etc/nginx/nginx.conf \
+  nginx
 
 ```
