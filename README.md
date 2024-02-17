@@ -65,10 +65,10 @@ http {
 }
 ```
 
-### install deps
+### generate key
 ```bash
-sudo apt-get install openssl
-openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.key -out key.crt
+
 ```
 
 ### run docker nginx
