@@ -46,21 +46,20 @@ cat private.pem > certificate.crt
 
 ### nginx.conf
 ```
-http {
-    server {
-        listen 443 ssl;
-        server_name 172.104.163.57;
 
-        ssl_certificate /etc/nginx/certs/key.crt;
-        ssl_certificate_key /etc/nginx/certs/key.key;
+server {
+    listen 443 ssl;
+    server_name 172.104.163.57;
 
-        location / {
-            proxy_pass http://172.104.163.57:8080;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-        }
+    ssl_certificate /etc/nginx/certs/key.crt;
+    ssl_certificate_key /etc/nginx/certs/key.key;
+
+    location / {
+        proxy_pass http://172.104.163.57:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 ```
