@@ -61,12 +61,16 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
-
 ```
 
+### install deps
 ```bash
 sudo apt-get install openssl
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+```
+
+### run docker nginx
+```bash
 docker run -d \
   --name nginx-proxy \
   -p 443:443 \
@@ -74,5 +78,4 @@ docker run -d \
   -v /root/key.pem:/etc/nginx/key.pem \
   -v /root/nginx.conf:/etc/nginx/nginx.conf \
   nginx
-
 ```
