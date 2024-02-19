@@ -29,30 +29,16 @@ sudo dpkg-reconfigure keyboard-configuration
 docker run -dp 3306:3306 --name docker-mysql -e MYSQL_ROOT_PASSWORD=root -v /TEMP/mysql:/var/lib/mysql mysql:latest
 ```
 
-## SSL
-
-```bash
-openssl genrsa -aes256 -out private.key 2048
-openssl req -new -key private.key -out certificate.csr
-openssl req -x509 -key private.key -in certificate.csr -out certificate.pem -days 36500
-openssl x509 -in certificate.pem -text -noout
-openssl rsa -in private.key -out private.pem
-
-cat certificate.pem > certificate.crt
-cat private.pem > certificate.crt
-```
-
-## self-signed with docker nginx
+## run nginx for https with rev-proxy
 
 ### nginx.conf
 ```
-
 server {
     listen 443 ssl;
     server_name 172.104.163.57;
 
-    ssl_certificate /etc/nginx/certs/key.crt;
-    ssl_certificate_key /etc/nginx/certs/key.key;
+    ssl_certificate /etc/nginx/certs/xxx.key;
+    ssl_certificate_key /etc/nginx/certs/xxx.key;
 
     location / {
         proxy_pass http://172.104.163.57:8080;
@@ -60,14 +46,13 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+
+        # WebSocket support
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
     }
 }
-```
-
-### generate key
-```bash
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.key -out key.crt
-
 ```
 
 ### run docker nginx
